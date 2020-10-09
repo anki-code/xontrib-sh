@@ -87,7 +87,7 @@ xontrib load sh
 # bash: line 0: set: -U: invalid option
 ```
 
-If you have an idea how to improve shell detection pull requests are welcome!
+If you have an idea how to improve the shell detection pull requests are welcome!
 
 ## Credits
 
