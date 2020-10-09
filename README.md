@@ -26,7 +26,7 @@ but if the commands modify the environment there will no changes in source xonsh
 
 To set the list of shells use environment variable before loading the xontrib:
 ```python
-$XONTRIB_SH_SHELLS = ['bash', 'sh']
+$XONTRIB_SH_SHELLS = ['bash', 'sh']  # default
 xontrib load sh
 ```
 
