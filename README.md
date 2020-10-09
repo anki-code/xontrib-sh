@@ -23,7 +23,7 @@ and the commands will be run in the first matching shell.
 The commands will be executed in the environment that will be inherited from current
 but if the commands modify the environment there will no changes in source xonsh environment.
 
-## Example
+## Use cases
 
 ### One line: brace expansion (bash syntax)
 ```bash
@@ -52,6 +52,11 @@ zsh:
 4
 5
 6
+```
+
+### Set certain shell for all commands
+```python
+$XONTRIB_SH_SHELLS = ['zsh']
 ```
 
 ## Credits

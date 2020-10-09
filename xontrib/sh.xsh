@@ -1,6 +1,6 @@
 from shutil import which
 
-_shells = ['bash', 'zsh', 'fish', 'sh']
+_shells = list(__xonsh__.env.get('XONTRIB_SH_SHELLS', ['bash', 'zsh', 'fish', 'sh']))
 _installed_shells = []
 
 @events.on_transform_command
@@ -11,16 +11,19 @@ def onepath(cmd, **kw):
                 if which(s):
                     _installed_shells.append(s)
 
-        cmd = cmd[1:].strip()
+        shell_cmd = cmd[1:].strip()
+
+        if not shell_cmd:
+            return cmd
 
         first_compatible_shell = None
         for s in _installed_shells:
-            if $(@(s) -nc @(cmd) 2>&1).strip() == '':
+            if $(@(s) -nc @(shell_cmd) 2>&1).strip() == '':
                 first_compatible_shell = s
                 break
 
         if first_compatible_shell:
-            shell_cmd = first_compatible_shell + ' -c'
+            shell = first_compatible_shell + ' -c'
             printx(f'{{BOLD_WHITE}}{first_compatible_shell}:{{RESET}}\n\r', end='')
         else:
             try_to_install = ''
@@ -28,7 +31,7 @@ def onepath(cmd, **kw):
             if len(not_installed_shells) > 0:
                 try_to_install = f'Try to install {",".join(not_installed_shells)}.'
             printx(f'{{BOLD_WHITE}}Checked {", ".join(_installed_shells)} with no success. {try_to_install}{{RESET}}\n\r', end='')
-            shell_cmd = 'echo'
+            shell = 'echo'
 
-        return f'{shell_cmd} @({repr(cmd)})'
+        return f'{shell} @({repr(shell_cmd)})'
     return cmd
