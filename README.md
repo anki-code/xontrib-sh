@@ -78,7 +78,7 @@ zsh:
 
 ### Set certain shell for all commands
 ```python
-$XONTRIB_SH_SHELLS = ['zsh']
+$XONTRIB_SH_SHELLS = ['bash']
 ```
 
 ## Credits
