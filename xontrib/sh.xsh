@@ -1,6 +1,6 @@
 from shutil import which
 
-_shells = ['bash', 'zsh', 'fish']
+_shells = ['bash', 'zsh', 'fish', 'sh']
 _installed_shells = []
 
 @events.on_transform_command
@@ -13,13 +13,13 @@ def onepath(cmd, **kw):
 
         cmd = cmd[1:].strip()
 
-        shells = []
+        first_compatible_shell = None
         for s in _installed_shells:
             if $(@(s) -nc @(cmd) 2>&1).strip() == '':
-                shells.append(s)
+                first_compatible_shell = s
+                break
 
-        if shells:
-            first_compatible_shell = shells[0]
+        if first_compatible_shell:
             shell_cmd = first_compatible_shell + ' -c'
             printx(f'{{BOLD_WHITE}}{first_compatible_shell}:{{RESET}}\n\r', end='')
         else:
