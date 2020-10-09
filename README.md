@@ -1,5 +1,5 @@
 <p align="center">  
-Paste and run commands from bash, zsh, fish in <a href="https://xon.sh">xonsh shell</a>.
+Paste and run commands from bash, fish, zsh in <a href="https://xon.sh">xonsh shell</a>.
 </p>
 
 <p align="center">  
@@ -17,16 +17,18 @@ echo 'xontrib load sh' >> ~/.xonshrc
 ## Usage
 
 Start a line with an exclamation point — `!` — then paste the sh-compatible commands 
-after it and run. The command syntax will be tested in installed shells (bash, zsh, fish, sh) 
-and the commands will be run in the first matching shell.
+after it and run. The commands syntax will be tested in installed shells 
+and the commands will be run in the first matching shell. By default was set two shells: bash and sh. 
+You can add other to the list of shells.
 
 The commands will be executed in the environment that will be inherited from current
 but if the commands modify the environment there will no changes in source xonsh environment.
 
-**Note!** The syntax checking is not determine the shell exactly right and pull requests are welcome!
-The short commands may be determined as bash commands but it's fish or zsh.
-As result the command will be failed. Use this carefully and if you know that you need only bash 
-just remove the zsh and fish from the list as described below.
+To set the list of shells use environment variable before loading the xontrib:
+```python
+$XONTRIB_SH_SHELLS = ['bash', 'sh']
+xontrib load sh
+```
 
 ## Use cases
 
@@ -47,7 +49,7 @@ XH=~/.xxh \
 It's bash and it's environment agnostic and you hesitate how xonsh will execute this. Just start with `!` and 
 paste this commands. As result you've installed `xxh local` and stayed in xonsh.
 
-### One line: brace expansion (bash syntax)
+### One line: brace expansion
 ```bash
 ! echo 01.{05..10}
 ``` 
@@ -56,30 +58,36 @@ bash:
 01.05 01.06 01.07 01.08 01.09 01.10
 ```
 
-### Many lines: for loop (zsh syntax)
-```zsh
-! for x (1 2 3); do 
-  echo $x; 
-done
-
-for x (4 5 6); do 
-  echo $x; 
+### Many lines: for loop
+```bash
+! for i in 1 2 3
+do
+   echo $i
 done
 ```
 ```
-zsh:
+bash:
 1
 2
 3
-4
-5
-6
 ```
 
-### Set certain shell for any commands
+## Known issues
+
+If you want to use many shells the syntax checking is not determine the shell exactly right!
+If you have bash and fish in the list of shells the short fish commands may be determined as bash commands but it's fish.
+As result the command will be failed. Use multi shell list carefully.
+
+Bad example:
 ```python
-$XONTRIB_SH_SHELLS = ['bash']
+$XONTRIB_SH_SHELLS = ['bash', 'fish']
+xontrib load sh
+# Run fish command:
+! set -U EDITOR vim
+# bash: line 0: set: -U: invalid option
 ```
+
+If you have an idea how to improve shell detection pull requests are welcome!
 
 ## Credits
 

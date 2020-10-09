@@ -1,6 +1,6 @@
 from shutil import which
 
-_shells = list(__xonsh__.env.get('XONTRIB_SH_SHELLS', ['bash', 'zsh', 'fish', 'sh']))
+_shells = list(__xonsh__.env.get('XONTRIB_SH_SHELLS', ['bash', 'sh']))
 _installed_shells = []
 
 @events.on_transform_command
