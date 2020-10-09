@@ -23,11 +23,10 @@ and the commands will be run in the first matching shell.
 The commands will be executed in the environment that will be inherited from current
 but if the commands modify the environment there will no changes in source xonsh environment.
 
-**Note!** The syntax checking is not determine the shell exactly right. The short commands
-may be determined as bash commands but it's fish or zsh. As result the command will be failed. 
-Use this carefully and if you exectly know that you need only bash 
+**Note!** The syntax checking is not determine the shell exactly right and pull requests are welcome!
+The short commands may be determined as bash commands but it's fish or zsh.
+As result the command will be failed. Use this carefully and if you know that you need only bash 
 just remove the zsh and fish from the list as described below.
-
 
 ## Use cases
 
