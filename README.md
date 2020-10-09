@@ -72,6 +72,16 @@ bash:
 3
 ```
 
+### Use environment variables to pass values from xonsh to sh
+```python
+$ENV = 'hello'
+! echo $ENV!
+```
+```
+bash:
+hello!
+```
+
 ## Known issues
 
 If you want to use many shells the syntax checking is not determine the shell exactly right.
