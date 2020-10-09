@@ -36,7 +36,7 @@ The main use case of `xontrib-sh` is when you copy and paste the sh-commands fro
 and this commands are environment agnostic and you want to run it without rewriting it on xonsh or run sh-shell. 
 
 For example you've found [xxh local](https://github.com/xxh/xxh#using-xxh-inplace-without-ssh-connection) snippet:
-```
+```bash
 XH=~/.xxh \
  && XD=https://github.com/xxh/xxh-portable/raw/master/result/xxh-portable-musl-alpine-Linux-x86_64.tar.gz \
  && mkdir -p $XH && cd $XH \
