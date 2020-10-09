@@ -75,10 +75,11 @@ bash:
 ## Known issues
 
 If you want to use many shells the syntax checking is not determine the shell exactly right.
-If you have bash and fish in the list of shells the short fish command may be determined as bash command.
-As result the command will be failed. Use multi shell list carefully.
-
-Bad example:
+Shell detection works perfect when the commands contain shell-specific syntax.
+But if you run the short command the first matched shell will be chosen. 
+ 
+For example you have bash and fish in the list of shells. The short fish command may be determined as bash command.
+As result the command will be failed:
 ```python
 $XONTRIB_SH_SHELLS = ['bash', 'fish']
 xontrib load sh
@@ -87,7 +88,7 @@ xontrib load sh
 # bash: line 0: set: -U: invalid option
 ```
 
-If you have an idea how to improve the shell detection pull requests are welcome!
+Use shells list carefully! If you have an idea how to improve the shell detection pull requests are welcome!
 
 ## Credits
 
