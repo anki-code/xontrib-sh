@@ -74,8 +74,8 @@ bash:
 
 ## Known issues
 
-If you want to use many shells the syntax checking is not determine the shell exactly right!
-If you have bash and fish in the list of shells the short fish commands may be determined as bash commands but it's fish.
+If you want to use many shells the syntax checking is not determine the shell exactly right.
+If you have bash and fish in the list of shells the short fish command may be determined as bash command.
 As result the command will be failed. Use multi shell list carefully.
 
 Bad example:
