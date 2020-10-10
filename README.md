@@ -16,10 +16,9 @@ echo 'xontrib load sh' >> ~/.xonshrc
 
 ## Usage
 
-Start a line with an exclamation point — `!` — then paste the sh-compatible commands 
+Start the line with an exclamation point — `!` — then paste the sh-compatible commands 
 after it and run. The commands syntax will be tested in installed shells 
-and the commands will be run in the first matching shell. By default was set two shells: bash and sh. 
-You can add other to the list of shells.
+and the commands will be run in the first matching shell. By default list of shells contains bash and sh. 
 
 The commands will be executed in the environment that will be inherited from current
 but if the commands modify the environment there will no changes in source xonsh environment.
