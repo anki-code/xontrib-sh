@@ -5,7 +5,7 @@ _installed_shells = []
 
 @events.on_transform_command
 def onepath(cmd, **kw):
-    if cmd and cmd[0] == '!':
+    if len(cmd) > 2 and cmd.startswith('! '):
         if not _installed_shells:
             for s in _shells:
                 if which(s):
@@ -17,21 +17,16 @@ def onepath(cmd, **kw):
             return cmd
 
         first_compatible_shell = None
+        check_output_all = ''
         for s in _installed_shells:
-            if $(@(s) -nc @(shell_cmd) 2>&1).strip() == '':
+            check_output = $(@(s) -nc @(shell_cmd) 2>&1).strip()
+            if check_output == '':
                 first_compatible_shell = s
                 break
+            check_output_all += f'\n\n{s}:\n\n{check_output}'
 
         if first_compatible_shell:
-            shell = first_compatible_shell + ' -c'
-            printx(f'{{BOLD_WHITE}}{first_compatible_shell}:{{RESET}}\n\r', end='')
+            return f'{first_compatible_shell} -c @({repr(shell_cmd)})'
         else:
-            try_to_install = ''
-            not_installed_shells = [s for s in _shells if s not in _installed_shells]
-            if len(not_installed_shells) > 0:
-                try_to_install = f'Try to install {",".join(not_installed_shells)}.'
-            printx(f'{{BOLD_WHITE}}Checked {", ".join(_installed_shells)} with no success. {try_to_install}{{RESET}}\n\r', end='')
-            shell = 'echo'
-
-        return f'{shell} @({repr(shell_cmd)})'
+            return f'echo @({repr(check_output_all.lstrip())})'
     return cmd
