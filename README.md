@@ -16,7 +16,7 @@ echo 'xontrib load sh' >> ~/.xonshrc
 
 ## Usage
 
-Start the line with an exclamation point and space — `! ` — then paste the sh-compatible commands 
+Start the line with `! ` (exclamation point with space) then paste the sh-compatible commands 
 after it and run. The commands syntax will be tested in installed shells 
 and the commands will be run in the first matching shell. By default list of shells contains bash and sh. 
 
@@ -45,7 +45,7 @@ XH=~/.xxh \
  && echo 'Usage: ./xxh local [+s xonsh/zsh/fish/osquery/bash]'
 ```
 
-It's bash and it's environment agnostic and you hesitate how xonsh will execute this. Just start with `!` and 
+It's bash and it's environment agnostic and you hesitate how xonsh will execute this. Just start with `! ` and 
 paste this commands. As result you've installed `xxh local` and stayed in xonsh.
 
 ### One line: brace expansion
