@@ -38,7 +38,7 @@ and this commands are environment agnostic and you want to run it without rewrit
 
 For example you've found snippet of bash commands that checks existing of `curl`:
 ```bash
-TMP=/tmp && cd $TMP && ( [[ -x $(command -v curl) ]] && echo "You have curl! :)" || echo "You haven't curl! :(" )  
+TMP=/tmp && cd $TMP && ( [[ -x $(command -v curl) ]] && echo "Curl! :)" || echo "No curl! :(" )  
 ```
 
 You hesitate how xonsh will execute this and you're absolutely right there will be syntax error. 
