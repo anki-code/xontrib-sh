@@ -16,12 +16,12 @@ echo 'xontrib load sh' >> ~/.xonshrc
 
 ## Usage
 
-Start the line with `! ` (exclamation point with space) then paste the sh-compatible commands 
-after it and run. The commands syntax will be tested in installed shells 
-and the commands will be run in the first matching shell. By default list of shells contains bash and sh. 
+Start the line with `! ` (exclamation point with space) then paste the sh-compatible commands after it and run. 
+The commands syntax will be tested in the shells from list (if installed) and the commands will be run in 
+the first matching shell. By default list of shells contains bash and sh. 
 
-The commands will be executed in the environment that will be inherited from current
-but if the commands modify the environment there will no changes in source xonsh environment.
+The commands will be executed in the environment that will be inherited from current but if the commands modify 
+the environment there will no changes in source xonsh environment.
 
 To set the list of shells use environment variable before loading the xontrib:
 ```python
