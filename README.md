@@ -36,17 +36,13 @@ xontrib load sh
 The main use case of `xontrib-sh` is when you copy and paste the sh-commands from some article or instruction 
 and this commands are environment agnostic and you want to run it without rewriting it on xonsh or run sh-shell. 
 
-For example you've found [xxh local](https://github.com/xxh/xxh#using-xxh-inplace-without-ssh-connection) snippet:
+For example you've found snippet of bash commands that checks existing of `curl`:
 ```bash
-XH=~/.xxh \
- && XD=https://github.com/xxh/xxh-portable/raw/master/result/xxh-portable-musl-alpine-Linux-x86_64.tar.gz \
- && mkdir -p $XH && cd $XH \
- && ( [[ -x $(command -v curl) ]] && curl -L $XD || wget -O- $XD ) | tar zxf - xxh \
- && echo 'Usage: ./xxh local [+s xonsh/zsh/fish/osquery/bash]'
+TMP=/tmp && cd $TMP && ( [[ -x $(command -v curl) ]] && echo "You have curl! :)" || echo "You haven't curl! :(" )  
 ```
 
-It's bash and it's environment agnostic and you hesitate how xonsh will execute this. Just start with `! ` and 
-paste this commands. As result you've installed `xxh local` and stayed in xonsh.
+You hesitate how xonsh will execute this and you're absolutely right there will be syntax error. 
+To run this just start with `! ` and paste the commands. As result you'll see the right message.
 
 ### One line: brace expansion
 ```bash
