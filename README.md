@@ -1,5 +1,5 @@
 <p align="center">  
-Paste and run commands from bash, fish, zsh in <a href="https://xon.sh">xonsh shell</a>.
+Paste and run commands from bash, fish, zsh, tcsh in <a href="https://xon.sh">xonsh shell</a>.
 </p>
 
 <p align="center">  
