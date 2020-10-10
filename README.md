@@ -83,9 +83,8 @@ hello!
 
 ## Known issues
 
-If you want to use many shells the syntax checking is not determine the shell exactly right.
 Shell detection works perfect when the commands contain shell-specific syntax.
-But if you run the short command the first matched shell will be chosen. 
+But if you run the short command that could be valid in all shells the first matched shell will be chosen. 
  
 For example you have bash and fish in the list of shells. The short fish command may be determined as bash command.
 As result the command will be failed:
