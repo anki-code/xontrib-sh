@@ -29,9 +29,7 @@ $XONTRIB_SH_SHELLS = ['bash', 'sh']  # default
 xontrib load sh
 ```
 
-## Use cases
-
-### The main use case
+## The main use case
 
 The main use case of `xontrib-sh` is when you copy and paste the sh-commands from some article or instruction 
 and this commands are environment agnostic and you want to run it without rewriting it on xonsh or run sh-shell. 
@@ -43,6 +41,8 @@ TMP=/tmp && cd $TMP && ( [[ -x $(command -v curl) ]] && echo "Curl! :)" || echo 
 
 You hesitate how xonsh will execute this and you're absolutely right there will be syntax error. 
 To run this just start with `! ` and paste the commands. As result you'll see the right message.
+
+## Examples
 
 ### One line: brace expansion
 ```bash
