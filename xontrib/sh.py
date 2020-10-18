@@ -19,7 +19,7 @@ def onepath(cmd, **kw):
         first_compatible_shell = None
         check_output_all = ''
         for s in _installed_shells:
-            check_output = $(@(s) -nc @(shell_cmd) 2>&1).strip()
+            check_output = __xonsh__.subproc_captured_stdout([s, '-nc', shell_cmd, '2>&1']).strip()
             if check_output == '':
                 first_compatible_shell = s
                 break

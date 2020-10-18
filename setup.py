@@ -9,7 +9,7 @@ except (IOError, OSError):
 
 setup(
     name='xontrib-sh',
-    version='0.1.1',
+    version='0.1.2',
     license='BSD',
     author='anki',
     author_email='author@example.com',
@@ -19,7 +19,7 @@ setup(
     python_requires='>=3.6',
     packages=['xontrib'],
     package_dir={'xontrib': 'xontrib'},
-    package_data={'xontrib': ['*.xsh']},
+    package_data={'xontrib': ['*.py']},
     platforms='any',
     url='https://github.com/anki-code/xontrib-sh',
     project_urls={
