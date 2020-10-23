@@ -95,5 +95,5 @@ xontrib load sh
 Use shells list carefully! If you have an idea how to improve the shell detection pull requests are welcome!
 
 ## Links 
-* This xontrib is a part of [ergopack](https://github.com/anki-code/xontrib-ergopack) - the pack of ergonomic xontribs.
+* This package is the part of [ergopack](https://github.com/anki-code/xontrib-ergopack) - the pack of ergonomic xontribs.
 * This package was created with [xontrib cookiecutter template](https://github.com/xonsh/xontrib-cookiecutter).
