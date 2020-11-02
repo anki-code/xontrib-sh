@@ -44,7 +44,7 @@ To run this just start with `! ` and paste the commands. As result you'll see th
 
 ## Examples
 
-### One line: brace expansion
+### Bash brace expansion
 ```bash
 ! echo 01.{05..10}
 ``` 
@@ -53,7 +53,7 @@ bash:
 01.05 01.06 01.07 01.08 01.09 01.10
 ```
 
-### Many lines: for loop
+### Loop
 ```bash
 ! for i in 1 2 3
 do
@@ -79,6 +79,8 @@ hello!
 
 ## Known issues
 
+#### Determining the shell on short command
+
 In case of usage many different shells the detection of the shell works perfect when the commands contain shell-specific syntax.
 But if you run the short command that could be valid in all shells the first matched shell will be chosen but it's could be wrong. 
  
@@ -93,6 +95,11 @@ xontrib load sh
 ```
 
 Use shells list carefully! If you have an idea how to improve the shell detection pull requests are welcome!
+
+#### Why it's better than [xonsh subprocess macros](https://xon.sh/tutorial_macros.html#subprocess-macros)?
+
+Xonsh subprocess macros is not supporting multiline commands and require more keystrokes.
+
 
 ## Links 
 * This package is the part of [ergopack](https://github.com/anki-code/xontrib-ergopack) - the pack of ergonomic xontribs.
