@@ -34,7 +34,7 @@ xontrib load sh
 The main use case of `xontrib-sh` is when you copy and paste the sh-commands from some article or instruction 
 and this commands are environment agnostic and you want to run it without rewriting it on xonsh or run sh-shell. 
 
-For example you've found snippet of bash commands that checks existing of `curl`:
+For example you've found snippet of bash commands that check existing of `curl`:
 ```bash
 TMP=/tmp && cd $TMP && ( [[ -x $(command -v curl) ]] && echo "Curl! :)" || echo "No curl! :(" )  
 ```
