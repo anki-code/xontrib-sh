@@ -2,6 +2,9 @@ from shutil import which
 
 _shells = list(__xonsh__.env.get('XONTRIB_SH_SHELLS', ['bash', 'sh']))
 _installed_shells = []
+_match_first_char = __xonsh__.env.get('XONTRIB_SH_MATCHFIRST', True)
+_match_full_name = __xonsh__.env.get('XONTRIB_SH_MATCHFULL', True)
+
 
 @events.on_transform_command
 def onepath(cmd, **kw):
@@ -29,4 +32,29 @@ def onepath(cmd, **kw):
             return f'{first_compatible_shell} -c @({repr(shell_cmd)})'
         else:
             return f'echo @({repr(check_output_all.lstrip())})'
+    elif len(cmd) > 3 and cmd.startswith('!'):
+        first_compatible_shell = None
+        if _match_first_char:
+            for shell in _shells:
+                if cmd.startswith('!' + shell[0] + ' '):
+                    if which(shell):
+                        first_compatible_shell = shell
+                    break
+        if _match_full_name:
+            for shell in _shells:
+                if cmd.startswith('!' + shell + ' '):
+                    if which(shell):
+                        first_compatible_shell = shell
+                    break
+
+        shell_cmd = cmd[cmd.find(' '):].strip()
+
+        if not shell_cmd:
+            return cmd
+
+        if first_compatible_shell:
+            return f'{first_compatible_shell} -c @({repr(shell_cmd)})'
+        else:
+            return f'echo @({repr("")})'
+
     return cmd

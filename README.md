@@ -16,7 +16,15 @@ echo 'xontrib load sh' >> ~/.xonshrc
 
 ## Usage
 
-Start the line with `! ` (exclamation point with space) then paste the sh-compatible commands after it and run. 
+There are two ways to invoke an sh-compatible command:
+
+####1. With a shell detected automatically
+
+Start the line with 
+
+`!` ` ` (exclamation mark with space)
+
+then paste the sh-compatible commands after it and run. 
 The commands syntax will be tested in the shells from list (if installed) and the commands will be run in 
 the first matching shell. By default list of shells contains bash and sh. 
 
@@ -27,6 +35,25 @@ To set the list of shells use environment variable before loading the xontrib:
 ```python
 $XONTRIB_SH_SHELLS = ['bash', 'sh']  # default
 xontrib load sh
+```
+
+####2. With a shell specified manually
+
+Same as above, but add the required shell name between the exclamation mark and space, either:
+
+`!bash` ` ` the full shell name OR
+
+`!b` ` ` only its first letter
+
+then paste sh-compatible commands after it and run.
+
+Each shell name (or only its first letter, or both, depending on the value of the two environment variables listed below) from the configured list will be matched against the full/short name specified in the prefix, and the commands will be run in the first matching shell (if installed).
+
+```python
+# Given '!b ', match 'b' to the first letter of each shell in $XONTRIB_SH_SHELLS (use the first shell starting with 'b')
+$XONTRIB_SH_USEFIRST = True # default True
+# Given '!bash ', match 'bash' to the full name of each shell in $XONTRIB_SH_SHELLS
+$XONTRIB_SH_USEFULL  = True # default True
 ```
 
 ## The main use case
@@ -40,13 +67,17 @@ TMP=/tmp && cd $TMP && ( [[ -x $(command -v curl) ]] && echo "Yes" || echo "No" 
 ```
 
 You hesitate how xonsh will execute this and you're absolutely right there will be syntax error. 
-To run this just start with `! ` and paste the commands. As result you'll see the right message.
+To run this just start with `! ` or `!b ` or `!bash ` and paste the commands. As result you'll see the right message.
 
 ## Examples
 
 ### Bash brace expansion
 ```bash
 ! echo 01.{05..10}
+    #OR
+!b echo 01.{05..10}    # unless $XONTRIB_SH_MATCHFIRST = False (default is True)
+    #OR
+!bash echo 01.{05..10} # unless $XONTRIB_SH_MATCHFULL  = False (default is True)
 ``` 
 ```
 bash:
@@ -92,6 +123,12 @@ xontrib load sh
 # Run fish command:
 ! set -U EDITOR vim
 # bash: line 0: set: -U: invalid option
+```
+However, the command with the fish shell __specified explicitly__ will succeed
+```python
+# Run fish command in a manually set fish shell
+# requires option '$XONTRIB_SH_MATCHFULL = True', which is the default value
+!fish set -U EDITOR vim
 ```
 
 Use shells list carefully! If you have an idea how to improve the shell detection pull requests are welcome!
