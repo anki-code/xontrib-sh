@@ -12,7 +12,8 @@ def onepath(cmd, **kw):
     if len(cmd) > 2 and cmd.startswith('! '):
         if not _installed_shells:
             for s in _shells:
-                if exists := which(s):
+                exists = which(s)
+                if exists:
                     if not exists.lower().endswith(_bash_win):
                         _installed_shells.append(s)
         if not _installed_shells:
@@ -43,14 +44,16 @@ def onepath(cmd, **kw):
         if _match_first_char:
             for shell in _shells:
                 if cmd.startswith('!' + shell[0] + ' '):
-                    if exists := which(shell):
+                    exists = which(shell)
+                    if exists:
                         if not exists.lower().endswith(_bash_win):
                             first_compatible_shell = shell
                     break
         if _match_full_name:
             for shell in _shells:
                 if cmd.startswith('!' + shell + ' '):
-                    if exists := which(shell):
+                    exists = which(shell)
+                    if exists:
                         if not exists.lower().endswith(_bash_win):
                             first_compatible_shell = shell
                     break
