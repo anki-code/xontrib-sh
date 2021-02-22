@@ -16,7 +16,7 @@ echo 'xontrib load sh' >> ~/.xonshrc
 
 ## Usage
 
-Start the line with `! ` (exclamation point with space) then paste the sh-compatible commands after it and run. 
+Start the line with `! ` (exclamation mark with space) then paste the sh-compatible commands after it and run. 
 The commands syntax will be tested in the shells from list (if installed) and the commands will be run in 
 the first matching shell. By default list of shells contains bash and sh. 
 
@@ -27,7 +27,10 @@ To set the list of shells use environment variable before loading the xontrib:
 ```python
 $XONTRIB_SH_SHELLS = ['bash', 'sh']  # default
 xontrib load sh
+! echo hello
 ```
+
+Also you can set the shell explicitly i.e. `!bash ` or `!b ` (the first letter of the shell).
 
 ## The main use case
 
@@ -40,20 +43,23 @@ TMP=/tmp && cd $TMP && ( [[ -x $(command -v curl) ]] && echo "Yes" || echo "No" 
 ```
 
 You hesitate how xonsh will execute this and you're absolutely right there will be syntax error. 
-To run this just start with `! ` and paste the commands. As result you'll see the right message.
+To run this just start with `! ` or `!b ` or `!bash ` and paste the commands. As result you'll see the right message.
 
 ## Examples
 
 ### Bash brace expansion
 ```bash
 ! echo 01.{05..10}
+# Or explicitly:
+!b echo 01.{05..10}
+!bash echo 01.{05..10}
 ``` 
 ```
 bash:
 01.05 01.06 01.07 01.08 01.09 01.10
 ```
 
-### Loop
+### Multiline loop
 ```bash
 ! for i in 1 2 3
 do
@@ -90,16 +96,19 @@ As result the command will be failed:
 $XONTRIB_SH_SHELLS = ['bash', 'fish']
 xontrib load sh
 # Run fish command:
-! set -U EDITOR vim
+! set -U var1 value1
 # bash: line 0: set: -U: invalid option
 ```
-
-Use shells list carefully! If you have an idea how to improve the shell detection pull requests are welcome!
+To avoid this use the explicit setting the shell i.e. `!fish set -U var1 value1`.
 
 #### Why it's better than [xonsh subprocess macros](https://xon.sh/tutorial_macros.html#subprocess-macros)?
 
 Xonsh subprocess macros is not supporting multiline commands and require more keystrokes.
 
+## Additional options
+
+* `$XONTRIB_SH_USEFULL` (default `True`) - enables to set the shell explicitly by the name of the shell i.e. `!bash `.
+* `$XONTRIB_SH_USEFIRST` (default `True`) - enables to set the shell explicitly by the first letter i.e. `!b ` instead of `!bash `.
 
 ## Links 
 * This package is the part of [ergopack](https://github.com/anki-code/xontrib-ergopack) - the pack of ergonomic xontribs.
