@@ -1,7 +1,7 @@
 from shutil import which
 
 _shells = list(__xonsh__.env.get('XONTRIB_SH_SHELLS', ['bash', 'sh']))
-_bash_wsl = 'c:\\windows\\system32\\bash.EXE'
+_bash_win = 'bash.exe'
 _installed_shells = []
 _match_first_char = __xonsh__.env.get('XONTRIB_SH_MATCHFIRST', True)
 _match_full_name = __xonsh__.env.get('XONTRIB_SH_MATCHFULL', True)
@@ -12,9 +12,9 @@ def onepath(cmd, **kw):
     if len(cmd) > 2 and cmd.startswith('! '):
         if not _installed_shells:
             for s in _shells:
-                exists = which(s)
-                if exists and (exists != _bash_wsl):
-                    _installed_shells.append(s)
+                if exists := which(s):
+                    if not exists.lower().endswith(_bash_win):
+                        _installed_shells.append(s)
 
         shell_cmd = cmd[1:].strip()
 
@@ -39,16 +39,16 @@ def onepath(cmd, **kw):
         if _match_first_char:
             for shell in _shells:
                 if cmd.startswith('!' + shell[0] + ' '):
-                    exists = which(shell)
-                    if exists and (exists != _bash_wsl):
-                        first_compatible_shell = shell
+                    if exists := which(shell):
+                        if not exists.lower().endswith(_bash_win):
+                            first_compatible_shell = shell
                     break
         if _match_full_name:
             for shell in _shells:
                 if cmd.startswith('!' + shell + ' '):
-                    exists = which(shell)
-                    if exists and (exists != _bash_wsl):
-                        first_compatible_shell = shell
+                    if exists := which(shell):
+                        if not exists.lower().endswith(_bash_win):
+                            first_compatible_shell = shell
                     break
 
         shell_cmd = cmd[cmd.find(' '):].strip()

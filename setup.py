@@ -16,7 +16,7 @@ setup(
     description="Paste and run commands from bash, zsh, fish in xonsh shell.",
     long_description=long_description,
     long_description_content_type='text/markdown',
-    python_requires='>=3.6',
+    python_requires='>=3.8',
     packages=['xontrib'],
     package_dir={'xontrib': 'xontrib'},
     package_data={'xontrib': ['*.py']},
