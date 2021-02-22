@@ -15,6 +15,10 @@ def onepath(cmd, **kw):
                 if exists := which(s):
                     if not exists.lower().endswith(_bash_win):
                         _installed_shells.append(s)
+        if not _installed_shells:
+            ret_val = "xontrib-sh: No known shell is installed: " \
+                + ", ".join(map(str, _shells))
+            return f'echo @({repr(ret_val)})'
 
         shell_cmd = cmd[1:].strip()
 
@@ -59,6 +63,10 @@ def onepath(cmd, **kw):
         if first_compatible_shell:
             return f'{first_compatible_shell} -c @({repr(shell_cmd)})'
         else:
-            return f'echo @({repr("")})'
+            ret_val = "xontrib-sh: '" + cmd[1:cmd.find(" ")] + "'" \
+                + " is not matching any known shell" \
+                + " (or a matching shell isn't installed): " \
+                + ", ".join(map(str, _shells))
+            return f'echo @({repr(ret_val)})'
 
     return cmd
