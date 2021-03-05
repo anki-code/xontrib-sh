@@ -39,7 +39,9 @@ def onepath(cmd, **kw):
             return f'{first_compatible_shell} -c @({repr(shell_cmd)})'
         else:
             return f'echo @({repr(check_output_all.lstrip())})'
-    elif len(cmd) > 3 and cmd.startswith('!'):
+    elif len(cmd) > 3 and cmd.startswith('!')\
+                  and not cmd.startswith('![')\
+                  and not cmd.startswith('!('):
         first_compatible_shell = None
         if _match_first_char:
             for shell in _shells:
