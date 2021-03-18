@@ -13,7 +13,7 @@ setup(
     license='BSD',
     author='anki',
     author_email='author@example.com',
-    description="Paste and run commands from bash, zsh, fish in xonsh shell.",
+    description="Paste and run commands from bash, zsh, fish, tcsh, pwsh, cmd in xonsh shell.",
     long_description=long_description,
     long_description_content_type='text/markdown',
     python_requires='>=3.6',
