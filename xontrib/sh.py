@@ -15,7 +15,7 @@ def onepath(cmd, **kw):
                 exists = which(s)
                 if exists:
                     if not exists.lower().endswith(_bash_win):
-                        _installed_shells.append(s)
+                        _installed_shells.append(s.rstrip('.exe').lower())
         if not _installed_shells:
             ret_val = "xontrib-sh: No known shell is installed: " \
                 + ", ".join(map(str, _shells))
