@@ -101,6 +101,11 @@ xontrib load sh
 ```
 To avoid this use the explicit setting the shell i.e. `!fish set -U var1 value1`.
 
+Also, since __pwsh__ and __cmd__ shells don't have an option to detect their own syntax, they can only be invoked:
+
+  - explicitly by their name, i.e. `!p ` or `!pwsh `
+  - implicitly via the `! ` prefix only when there is __one__ shell in `$XONTRIB_SH_SHELLS`
+
 #### Why it's better than [xonsh subprocess macros](https://xon.sh/tutorial_macros.html#subprocess-macros)?
 
 Xonsh subprocess macros is not supporting multiline commands and require more keystrokes.
