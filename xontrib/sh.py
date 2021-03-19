@@ -10,6 +10,8 @@ _shells_without_syntax_check = ['pwsh', 'powershell', 'cmd']
 
 @events.on_transform_command
 def onepath(cmd, **kw):
+    cmd_flag = '-c' # *sh flag to execute the specified commands, change to '/C' for cmd
+
     if len(cmd) > 2 and cmd.startswith('! '):
         if not _installed_shells:
             for s in _shells:
@@ -30,7 +32,9 @@ def onepath(cmd, **kw):
         first_compatible_shell = None
         check_output_all = ''
         if len(_shells) == 1:   # skip syntax check for a single shell
-            return f'{_installed_shells[0]} -c @({repr(shell_cmd)})'
+            if _installed_shells[0] == 'cmd':
+                cmd_flag = '/C'
+            return f'{_installed_shells[0]} {cmd_flag} @({repr(shell_cmd)})'
         for s in _installed_shells:
             if s in _shells_without_syntax_check:  # skip shells that don't have a syntax check
                 continue
@@ -41,7 +45,7 @@ def onepath(cmd, **kw):
             check_output_all += f'\n\n{s}:\n\n{check_output}'
 
         if first_compatible_shell:
-            return f'{first_compatible_shell} -c @({repr(shell_cmd)})'
+            return f'{first_compatible_shell} {cmd_flag} @({repr(shell_cmd)})'
         else:
             return f'echo @({repr(check_output_all.lstrip())})'
     elif len(cmd) > 3 and cmd.startswith('!')\
@@ -71,7 +75,9 @@ def onepath(cmd, **kw):
             return cmd
 
         if first_compatible_shell:
-            return f'{first_compatible_shell} -c @({repr(shell_cmd)})'
+            if first_compatible_shell == 'cmd':
+                cmd_flag = '/C'
+            return f'{first_compatible_shell} {cmd_flag} @({repr(shell_cmd)})'
         else:
             ret_val = "xontrib-sh: '" + cmd[1:cmd.find(" ")] + "'" \
                 + " is not matching any known shell" \
