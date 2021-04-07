@@ -3,7 +3,7 @@ Paste and run commands from bash, fish, zsh, tcsh in <a href="https://xon.sh">xo
 </p>
 
 <p align="center">  
-If you like the idea click ⭐ on the repo and stay tuned.
+If you like the idea click ⭐ on the repo and and <a href="https://twitter.com/intent/tweet?text=Nice%20xontrib%20for%20the%20xonsh%20shell!&url=https://github.com/anki-code/xontrib-sh" target="_blank">tweet</a>.
 </p>
 
 
