@@ -42,7 +42,7 @@ For example you've found snippet of bash commands that check existing of `curl`:
 TMP=/tmp && cd $TMP && ( [[ -x $(command -v curl) ]] && echo "Yes" || echo "No" )  
 ```
 
-You hesitate how xonsh will execute this and you're absolutely right [there will be syntax error](https://github.com/anki-code/xonsh-cheatsheet/blob/main/README.md#three-most-frequent-things-that-newcomers-missed). 
+You hesitate [how xonsh will execute this](https://github.com/anki-code/xonsh-cheatsheet/blob/main/README.md#three-most-frequent-things-that-newcomers-missed) and you're absolutely right there will be syntax error. 
 To run this just start with `! ` or `!b ` or `!bash ` and paste the commands. As result you'll see the right message.
 
 ## Examples
