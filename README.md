@@ -42,7 +42,7 @@ For example you've found snippet of bash commands that check existing of `curl`:
 TMP=/tmp && cd $TMP && ( [[ -x $(command -v curl) ]] && echo "Yes" || echo "No" )  
 ```
 
-You hesitate how xonsh will execute this and you're absolutely right there will be syntax error. 
+You hesitate how xonsh will execute this and you're absolutely right [there will be syntax error](https://github.com/anki-code/xonsh-cheatsheet/blob/main/README.md#three-most-frequent-things-that-newcomers-missed). 
 To run this just start with `! ` or `!b ` or `!bash ` and paste the commands. As result you'll see the right message.
 
 ## Examples
@@ -116,5 +116,6 @@ Xonsh subprocess macros is not supporting multiline commands and require more ke
 * `$XONTRIB_SH_USEFIRST` (default `True`) - enables to set the shell explicitly by the first letter i.e. `!b ` instead of `!bash `.
 
 ## Links 
+* [How to create a xonsh alias that have a behavior like in xontrib-sh?](https://github.com/anki-code/xontrib-sh/issues/6#issuecomment-1045978621)
 * This package is the part of [ergopack](https://github.com/anki-code/xontrib-ergopack) - the pack of ergonomic xontribs.
 * This package was created with [xontrib cookiecutter template](https://github.com/xonsh/xontrib-cookiecutter).
