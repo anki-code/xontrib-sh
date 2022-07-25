@@ -116,6 +116,7 @@ Xonsh subprocess macros is not supporting multiline commands and require more ke
 * `$XONTRIB_SH_USEFIRST` (default `True`) - enables to set the shell explicitly by the first letter i.e. `!b ` instead of `!bash `.
 
 ## Links 
-* [How to create a xonsh alias that have a behavior like in xontrib-sh?](https://github.com/anki-code/xontrib-sh/issues/6#issuecomment-1045978621)
+* This package is the part of [rc-awesome](https://github.com/anki-code/xontrib-rc-awesome) - awesome snippets of code for xonshrc in xonsh shell.
 * This package is the part of [ergopack](https://github.com/anki-code/xontrib-ergopack) - the pack of ergonomic xontribs.
 * This package was created with [xontrib cookiecutter template](https://github.com/xonsh/xontrib-cookiecutter).
+* [How to create a xonsh alias that have a behavior like in xontrib-sh?](https://github.com/anki-code/xontrib-sh/issues/6#issuecomment-1045978621)
