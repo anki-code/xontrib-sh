@@ -1,3 +1,5 @@
+"""Paste and run commands from bash, zsh, fish, tcsh in xonsh shell. """
+
 from shutil import which
 
 _shells = list(__xonsh__.env.get('XONTRIB_SH_SHELLS', ['bash', 'sh']))
