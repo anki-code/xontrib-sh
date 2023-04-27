@@ -7,7 +7,7 @@ _bash_win = 'bash.exe'
 _installed_shells = []
 _match_first_char = __xonsh__.env.get('XONTRIB_SH_MATCHFIRST', True)
 _match_full_name = __xonsh__.env.get('XONTRIB_SH_MATCHFULL', True)
-_shells_without_syntax_check = ['pwsh', 'powershell', 'cmd']
+_shells_without_syntax_check = ['pwsh', 'powershell', 'cmd', 'nu']
 
 
 @events.on_transform_command
