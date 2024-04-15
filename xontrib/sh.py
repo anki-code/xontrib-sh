@@ -2,13 +2,19 @@
 
 from shutil import which
 
-_shells = list(__xonsh__.env.get('XONTRIB_SH_SHELLS', ['bash', 'sh']))
+def parse_shells_env(shells_env):
+    if isinstance(shells_env, str):
+        if '[' in shells_env: # string representation of a list
+            return shells_env.strip('[]').replace("'", "").split(',')
+        return [shells_env.replace("'", "")] #single shell
+    return list(shells_env)
+
+_shells = parse_shells_env(__xonsh__.env.get('XONTRIB_SH_SHELLS', ['bash', 'sh']))
 _bash_win = 'bash.exe'
 _installed_shells = []
 _match_first_char = __xonsh__.env.get('XONTRIB_SH_MATCHFIRST', True)
 _match_full_name = __xonsh__.env.get('XONTRIB_SH_MATCHFULL', True)
 _shells_without_syntax_check = ['pwsh', 'powershell', 'cmd', 'nu']
-
 
 @events.on_transform_command
 def onepath(cmd, **kw):
