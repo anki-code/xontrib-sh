@@ -17,7 +17,7 @@ _match_full_name = __xonsh__.env.get('XONTRIB_SH_MATCHFULL', True)
 _shells_without_syntax_check = ['pwsh', 'powershell', 'cmd', 'nu']
 
 @events.on_transform_command
-def onepath(cmd, **kw):
+def _xontrib_sh(cmd, **kw):
     cmd_flag = '-c' # *sh flag to execute the specified commands, change to '/C' for cmd
 
     if len(cmd) > 2 and cmd.startswith('! '):
